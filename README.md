@@ -1,70 +1,37 @@
-# Sachin's AI Portfolio Chatbot
+# Sachin's AI Assistant
 
-A production-grade, Next.js/React-compatible AI assistant backend built with FastAPI and an optional OpenAI integration.
+A beautiful, production-grade AI Chatbot built with Python (FastAPI). It serves a sleek, premium glassmorphism chat UI and features an intelligent NLP routing system for local fallback or OpenAI integration.
 
-## Getting Started
+## Features
+- **Premium UI:** A fully responsive, dark-mode glassmorphism interface.
+- **Dynamic Suggestions:** Auto-rotating suggestion chips that provide interactive questions about Sachin's professional background.
+- **Production AI Pipeline:** Designed to connect to OpenAI's GPT models to dynamically answer questions based on a strict system prompt containing Sachin's resume.
+- **Smart Fallback:** No API key? No problem! If no API key is provided, the backend drops into a local fallback mode that intelligently extracts and answers resume questions using keyword density matching.
 
-1. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-2. **Environment Variables:**
-   Create a `.env` file in the root directory and add your OpenAI Key (optional - without it, the bot will use a local fallback resume-data mode).
-   ```env
-   OPENAI_API_KEY="sk-..."
-   ```
-3. **Run the Application:**
-   ```bash
-   uvicorn app.main:app --reload --port 8000
-   ```
+## How to Run Locally
 
-## Attaching to Your Portfolio Website
-
-Since your portfolio is built in Next.js/React, you have two primary ways to attach this bot. First, you need to deploy this FastAPI application to a hosting provider. Good free/low-cost options for Python FastAPI backends are **Render** (`render.com`), **Railway**, or **Fly.io**.
-
-Once deployed, you will get a URL like `https://sachin-chat-api.onrender.com`.
-
-### Option 1: The UI iFrame Approach (Fastest)
-Currently, this backend natively serves a beautiful, glassmorphism UI from the root route. You can embed the entire UI inside your portfolio site instantly using an iframe:
-
-```jsx
-// In your Next.js file (e.g., app/page.tsx or components/ChatWidget.tsx)
-export default function ChatWidget() {
-  return (
-    <div style={{ width: '400px', height: '600px', borderRadius: '24px', overflow: 'hidden' }}>
-      <iframe 
-        src="https://sachin-chat-api.onrender.com" 
-        width="100%" 
-        height="100%" 
-        style={{ border: 'none' }}
-        title="Sachin AI Assistant"
-      />
-    </div>
-  );
-}
+### 1. Install Dependencies
+Ensure you have Python installed (version 3.10+ recommended), then run:
+```bash
+pip install -r requirements.txt
 ```
 
-### Option 2: The Custom API Approach (Recommended for Next.js)
-If you prefer to build the UI entirely inside your Next.js application (using Tailwind, Framer Motion, etc.), you can simply write a function that interacts with your deployed API:
+### 2. Environment Setup (Optional)
+The application will run perfectly fine out-of-the-box in **local fallback mode**. 
 
-```javascript
-// Example helper function for a Next.js component
-const fetchChatbotResponse = async (userMessage) => {
-  try {
-    const response = await fetch('https://sachin-chat-api.onrender.com/api/v1/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        user_id: 'user_portfolio', // You can optionally generate a random session ID here
-        message: userMessage 
-      })
-    });
-    
-    const data = await response.json();
-    return data.response; // "Hello! I am Sachin Kumar's AI assistant..."
-    
-  } catch (error) {
-    console.error("Chat API Failed", error);
-  }
-};
+If you want the generative intelligence of OpenAI, create a `.env` file in the root directory and add your key:
+```env
+OPENAI_API_KEY="sk-your-openai-api-key"
 ```
+
+### 3. Start the Server
+Start the FastAPI server using Uvicorn:
+```bash
+uvicorn app.main:app --reload --port 8000
+```
+
+### 4. Use the App
+Open your web browser and navigate to:
+**[http://localhost:8000](http://localhost:8000)**
+
+Start chatting using the suggestion chips or type your own questions!
