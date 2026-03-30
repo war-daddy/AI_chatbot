@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="glow glow-3"></div>
+    </div>
+    
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="avatar">
+                <div class="status-indicator"></div>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 19.93C13 19.98 12.98 20 12.93 20H11.07C11.02 20 11 19.98 11 19.93V18H13V19.93ZM17 17H7V16C7 14.9 8.1 14 9.2 14H14.8C15.9 14 17 14.9 17 16V17ZM17 12H7V10H17V12ZM19 8H5V6H19V8Z" fill="white"/>
+                </svg>
+            </div>
+            <div class="header-info">
+                <h1>Nexus AI</h1>
+                <span>Online</span>
+            </div>
+        </header>
+
+        <main class="chat-messages" id="chat-messages">
+            <div class="message system-message fade-in">
+                Secure connection established. Memory modules active.
+            </div>
+        </main>
+        
+        <div class="suggestion-chips" id="suggestion-chips">
+            <!-- Chips injected dynamically by JS -->
+        </div>
+
+        <footer class="chat-input-area">
+            <form id="chat-form">
+                <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off" />
+                <button type="submit" class="send-button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12L2.01 3L2 10L17 12L2 14L2.01 21Z" fill="currentColor"/>
+                    </svg>
+                </button>
+            </form>
+        </footer>
+    </div>
+    <script src="/static/app.js"></script>
+</body>
+</html>
